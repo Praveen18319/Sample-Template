@@ -1,0 +1,80 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vnetName": {
+      "type":"string",
+      "defaultValue": "vnet1", 
+      "metadata": {    
+         "Description": "Virtual network name"
+      }
+    },
+    "vnetaddress": {
+      "type": "string",
+      "defaultValue": "192.163.0.0/16",
+      "metadata": {    
+        "Description": "Value of the Vnet"
+     }
+    },
+    "vnetaddress01": {
+        "type": "string",
+        "defaultValue": "192.163.1.0/24",
+        "metadata": {    
+          "Description": "Range of vnet"
+       }
+      },
+    "Subnet01": {
+      "type": "string",
+      "defaultValue": "Fvnet",
+      "metadata": {    
+        "Description": "Name of the subnet"
+     }
+    },
+    "vnetaddress02": {
+        "type": "string",
+        "defaultValue": "192.163.2.0/24",
+        "metadata": {    
+          "Description": "Range of Firstvnet"
+       }
+      },
+    "Subnet02": {
+      "type": "string",
+      "defaultValue": "Svnet",
+      "metadata": {    
+        "Description": "Name of the Secondsubnet"
+     }
+    }
+  },
+  "variables": {
+
+  },
+  "resources":[
+    {
+      "apiVersion": "",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[parameters ('vnetName' )]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+      "addressSpace": {
+      "addressPrefixes": [
+      "[parameters ('vnetaddress' )]"
+        ]
+      },
+      "subnets": [
+        {
+        "name": "[parameters('Subnet01' )]",
+        "properties": {
+        "addressPrefix": "[parameters('vnetaddress01')]"
+        }
+      },
+      {
+        "name": "[parameters('Subnet02' )]",
+        "properties": {
+        "addressPrefix": "[parameters('vnetaddress02')]"
+        }
+      }
+      ]
+    }
+  }
+  ]
+}
