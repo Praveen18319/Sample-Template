@@ -35,4 +35,4 @@ jobs:
       location: $(location)
       templateLocation: 'URL of the file'
       csmFile: 'Sample template.json'
-      overrideParameters: '-vnetName $(vnetName) • -vnetAddressPrefix $(vnetAddressPrefix) -sul
+      #overrideParameters: '-vnetName $(vnetName) • -vnetAddressPrefix $(vnetAddressPrefix) -sul
