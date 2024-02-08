@@ -9,10 +9,10 @@ pool:
 steps:
 - task: AzureResourceGroupDeployment@2
   inputs:
-    azureSubscription: ''
+    azureSubscription: 'Devopsconnect'
     resourceGroupName: 'Devopsuser'
-    location: '<Location>'
-    csmFile: '<PathToARMTemplate>'
-    csmParametersFile: '<PathToARMParametersJson>'
-    overrideParameters: '-adminUsername $(adminUsername) -adminPassword $(adminPassword)'
+    location: 'Eastus'
+    csmFile: 'Sample template.json'
+    # csmParametersFile: '<PathToARMParametersJson>'
+    overrideParameters: '-adminUsername $(Praveenki18392@gmail.com) -adminPassword $(P9177450765)'
     deploymentMode: 'Incremental'
