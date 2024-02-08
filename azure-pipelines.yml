@@ -1,0 +1,38 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+    azureSubscription: 'Devopsconnect'
+    resourceGroupName: 'Devopsuser'
+    location: 'East us'
+    vnetName: 'Vnet1'
+    vnetAddressPrefix: '10.0.0.0/16'
+    subnet1Name: 'Subnet1'
+    subnet1Prefix: '10.0.0.0/24'
+    subnet2Name: 'Subnet1'
+    subnet2Prefix: '10.0.1.0/24'
+
+jobs:
+- job: Developvent
+  displayName: 'Deploy vnet'
+  steps:
+  - checkout: self
+
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '3.1.x'
+      installationPath: $(Agent.ToolDirectory)/dotnet
+
+  - task: AzureResourceGroupDeployment@2
+    inputs:
+      ConnectedServiceName: $(azureSubscription) 
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: $(resourceGroupName)
+      location: $(location)
+      templateLocation: 'URL of the file'
+      csmFile: 'Sample template.json'
+      #overrideParameters: '-vnetName $(vnetName) • -vnetAddressPrefix $(vnetAddressPrefix) -sul
