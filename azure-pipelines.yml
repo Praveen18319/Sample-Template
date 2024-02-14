@@ -7,7 +7,7 @@ pool:
 steps:
 - task: AzureResourceGroupDeployment@2
   inputs:
-    azureSubscription: 'ServiceConnectionName1'  # Replace with the name of your Azure service connection
+    azureSubscription: 'Devopsconnect'  # Replace with the name of your Azure service connection
     resourceGroupName: 'Devopsuser'  # Replace with the name of your resource group
     location: 'East US'  # Replace with the location of your resource group
     csmFile: 'Sample-Template.json'  # Replace with the path to your ARM template in the repository
