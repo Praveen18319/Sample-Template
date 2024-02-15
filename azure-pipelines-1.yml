@@ -1,0 +1,13 @@
+trigger:
+- main 
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzureResourceGroupDeployment@2
+  inputs:
+    azureSubscription: 'Devopsconnect'  # Replace with the name of your Azure service connection
+    resourceGroupName: 'Devopsuser'  # Replace with the name of your resource group
+    location: 'East US'  # Replace with the location of your resource group
+    csmFile: 'Sample-Template.json' 
